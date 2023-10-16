@@ -7,7 +7,7 @@
 
 /**
  * struct specifier_format - struct type_f
- * @type: character representing the type of the specifier
+ * @spec: character representing the type of the specifier
  * @f: pointer to a function to handle that specifier
  */
 typedef struct specifier_format
@@ -21,7 +21,7 @@ int _printf(const char *format, ...);
 
 int p_chr(va_list args);
 int p_str(va_list args);
-int p_percent();
+int p_percent(void);
 
 int passer(const char *format, va_list args);
 
