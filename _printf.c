@@ -2,12 +2,12 @@
 
 /**
  * passer - helper function for _printf this function loops through the format
- * 	    string printing the characters and calls the respective function to
- * 	    handle a specifier when it meets one.
+ *	string printing the characters and calls the respective function to
+ *	handle a specifier when it meets one.
  * @format: pointer to format string
  * @args: va_list pointer to variable arguments to be printed
  *
- * Returns: number of bytes(characters) printed
+ * Return: number of bytes(characters) printed
  */
 int passer(const char *format, va_list args)
 {
@@ -18,7 +18,7 @@ int passer(const char *format, va_list args)
 		{'%', p_percent},
 		{0, NULL}
 	};
-	
+
 	j = 0, count = 0;
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -59,6 +59,6 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(args, format);
-        count = passer(format, args);
+	count = passer(format, args);
 	return (count);
 }
