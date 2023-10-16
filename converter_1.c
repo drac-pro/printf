@@ -1,10 +1,23 @@
 #include "main.h"
 
+/**
+ * p_chr -  function prints character
+ * @args: arguments to print
+ *
+ * Return: number of bytes printed
+ */
 int p_chr(va_list args)
 {
 	_putchar(va_arg(args, int));
 	return (1);
 }
+
+/**
+ * p_str -  function print strinf
+ * @args: arguments to print
+ *
+ * Return: number of bytes printed
+ */
 int p_str(va_list args)
 {
 	int i;
@@ -17,7 +30,13 @@ int p_str(va_list args)
 		_putchar(str[i]);
 	return (i);
 }
-int p_percent()
+
+/**
+ * p_percent -  function prints character
+ *
+ * Return: number of bytes printed
+ */
+int p_percent(void)
 {
 	_putchar('%');
 	return (1);
