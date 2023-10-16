@@ -1,5 +1,14 @@
 #include "main.h"
 
+/**
+ * passer - helper function for _printf this function loops through the format
+ * 	    string printing the characters and calls the respective function to
+ * 	    handle a specifier when it meets one.
+ * @format: pointer to format string
+ * @args: va_list pointer to variable arguments to be printed
+ *
+ * Returns: number of bytes(characters) printed
+ */
 int passer(const char *format, va_list args)
 {
 	int i, j, count;
