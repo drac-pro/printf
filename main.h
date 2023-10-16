@@ -23,6 +23,8 @@ int p_chr(va_list args);
 int p_str(va_list args);
 int p_percent(va_list args);
 
-int passer(const char *format, va_list args);
+int passer(const char *format, spec_f specs[], va_list args);
+
+int str_error(char c);
 
 #endif /*MAIN_H*/

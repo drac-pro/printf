@@ -6,18 +6,12 @@
  *	handle a specifier when it meets one.
  * @format: pointer to format string
  * @args: va_list pointer to variable arguments to be printed
- *
+ * @specs: pointer to a list of specifiers
  * Return: number of bytes(characters) printed
  */
-int passer(const char *format, va_list args)
+int passer(const char *format, spec_f specs[], va_list args)
 {
 	int i, j, count;
-	spec_f specs[] = {
-		{'c', p_chr},
-		{'s', p_str},
-		{'%', p_percent},
-		{0, NULL}
-	};
 
 	j = 0, count = 0;
 	for (i = 0; format[i] != '\0'; i++)
@@ -29,9 +23,19 @@ int passer(const char *format, va_list args)
 			if (format[i + 1] == specs[j].spec)
 			{
 				count += specs[j].f(args);
+				break;
 			}
 			}
-			j = 0, i++;
+			if (specs[j].spec == 0)
+			{
+			if (format[i + 1] != '\0')
+			{
+				count += str_error(format[i + 1]);
+			}
+			else
+				return (-1);
+			}
+			i++;
 		}
 		else
 		{
@@ -53,11 +57,17 @@ int _printf(const char *format, ...)
 {
 	unsigned int count;
 	va_list args;
+	spec_f specs[] = {
+		{'c', p_chr},
+		{'s', p_str},
+		{'%', p_percent},
+		{0, NULL}
+	};
 
 	if (format == NULL)
 		return (-1);
 
 	va_start(args, format);
-	count = passer(format, args);
+	count = passer(format, specs, args);
 	return (count);
 }
