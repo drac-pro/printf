@@ -36,8 +36,9 @@ int p_str(va_list args)
  *
  * Return: number of bytes printed
  */
-int p_percent(void)
+int p_percent(va_list arg)
 {
+	(void) arg;
 	_putchar('%');
 	return (1);
 }
