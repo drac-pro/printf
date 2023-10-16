@@ -14,10 +14,16 @@ int str_error(char c)
 		_putchar(c);
 		return (2);
 	}
+	if (c == '\n')
+	{
+		_putchar('%');
+		_putchar('\n');
+		return (2);
+	}
 	else
 	{
 		_putchar('%');
 		return (1);
 	}
-	return (0);
+	return (1);
 }
