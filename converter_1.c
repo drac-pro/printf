@@ -33,7 +33,7 @@ int p_str(va_list args)
 
 /**
  * p_percent -  function prints character
- *
+ * @arg: pointer to argument(not usefull here) just technical
  * Return: number of bytes printed
  */
 int p_percent(va_list arg)
