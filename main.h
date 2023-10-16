@@ -7,7 +7,7 @@
 
 /**
  * struct specifier_format - struct type_f
- * @type: character representating the type of the specifier
+ * @type: character representing the type of the specifier
  * @f: pointer to a function to handle that specifier
  */
 typedef struct specifier_format
