@@ -5,6 +5,24 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+/**
+ * struct specifier_format - struct type_f
+ * @type: character representating the type of the specifier
+ * @f: pointer to a function to handle that specifier
+ */
+typedef struct specifier_format
+{
+	char spec;
+	int (*f)(va_list args);
+} spec_f;
+
+int _putchar(char c);
 int _printf(const char *format, ...);
+
+int p_chr(va_list args);
+int p_str(va_list args);
+int p_percent();
+
+int passer(const char *format, va_list args);
 
 #endif /*MAIN_H*/
