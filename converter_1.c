@@ -25,7 +25,7 @@ int p_str(va_list args)
 
 	str = va_arg(args, const char *);
 	if (str == NULL)
-		return (0);
+		str = "(null)";
 	for (i = 0; str[i] != '\0'; i++)
 		_putchar(str[i]);
 	return (i);

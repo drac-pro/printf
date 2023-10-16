@@ -24,13 +24,12 @@ int passer(const char *format, va_list args)
 	{
 		if (format[i] == '%')
 		{
-			while (specs[j].spec != 0)
+			for (j = 0; specs[j].spec != 0; j++)
 			{
 			if (format[i + 1] == specs[j].spec)
 			{
 				count += specs[j].f(args);
 			}
-			j++;
 			}
 			j = 0, i++;
 		}
