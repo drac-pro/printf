@@ -28,6 +28,7 @@ int print_binary(unsigned int n);
 int p_b(va_list args);
 int print_u(va_list args);
 int print_o(va_list args);
+int print_x_X(va_list args);
 
 int passer(const char *format, spec_f specs[], va_list args);
 

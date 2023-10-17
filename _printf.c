@@ -66,6 +66,8 @@ int _printf(const char *format, ...)
 		{'b', p_b},
 		{'u', print_u},
 		{'o', print_o},
+		{'x', print_x_X},
+		{'X', print_x_X},
 		{0, NULL}
 	};
 
