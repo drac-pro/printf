@@ -81,7 +81,7 @@ int print_u(va_list args)
  */
 int print_o(va_list args)
 {
-	unsigned int num, i, j, temp, num_dgits = 0;
+	unsigned int num, i, j, temp, num_digits = 0, digit;
 	int count = 0;
 
 	num = va_arg(args, unsigned int);
@@ -103,6 +103,8 @@ int print_o(va_list args)
 
 			for (j = 0; j < i; j++)
 			{
+				if (power > UINT_MAX / 8)
+					break;
 				power *= 8;
 			}
 
