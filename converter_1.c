@@ -8,7 +8,10 @@
  */
 int p_chr(va_list args)
 {
-	_putchar(va_arg(args, int));
+	char c;
+
+	c = va_arg(args, int);
+	_putchar(c);
 	return (1);
 }
 
