@@ -45,3 +45,32 @@ int p_percent(va_list arg)
 	_putchar('%');
 	return (1);
 }
+/**
+ * p_di -  function prints integers
+ * @arg: pointer to argument(not usefull here) just technical
+ * Return: number of bytes printed
+ */
+int p_di(va_list args)
+{
+	int num, din = 1;
+	unsigned int unum, count = 0;
+
+	num = va_arg(args, int);
+	if (num < 0)
+	{
+		count += _putchar('-');
+		num = -1 * num;
+	}
+	else
+		unum = num;
+	while (unum / din > 9)
+		din *= 10;
+	while (unum != 0)
+	{
+		count += _putchar(unum / din + '0');
+		unum %= din;
+		din /= 10;
+	}
+
+	return (count);
+}
