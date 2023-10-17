@@ -145,7 +145,7 @@ int print_x_X(va_list args)
 	for (i = num_digits; i > 0; i--)
 	{
 		unsigned int power = 1;
-		
+
 		for (j = 0; j < i; j++)
 		{
 			if (power > UINT_MAX / 16)
