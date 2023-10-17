@@ -64,6 +64,8 @@ int _printf(const char *format, ...)
 		{'d', p_di},
 		{'i', p_di},
 		{'b', p_b},
+		{'u', print_u},
+		{'o', print_o},
 		{0, NULL}
 	};
 

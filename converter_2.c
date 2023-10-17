@@ -73,3 +73,44 @@ int print_u(va_list args)
 
 	return (count);
 }
+/**
+ * print_o - function to handle specifier o.
+ * @args: argument to print
+ *
+ * Return: number of bytes.
+ */
+int print_o(va_list args)
+{
+	unsigned int num, i, j, temp, num_dgits = 0;
+	int count = 0;
+
+	num = va_arg(args, unsigned int);
+
+	if (num == 0)
+		count += _putchar('0');
+	else
+	{
+		temp = num;
+		while (temp > 0)
+		{
+			num_digits++;
+			temp /= 8;
+		}
+
+		for (i = num_digits; i > 0; i--)
+		{
+			unsigned int power = 1;
+
+			for (j = 0; j < i; j++)
+			{
+				power *= 8;
+			}
+
+			digit = num / power;
+			count += _putchar(digit + '0');
+			num -= digit * power;
+		}
+	}
+
+	return (count);
+}
