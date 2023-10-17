@@ -142,11 +142,6 @@ int print_x_X(va_list args)
 		}
 	}
 
-	for (i = 0; i < 8 - num_digits; i++)
-	{
-		count += _putchar(uppercase ? '0' : 'f');
-	}
-	
 	for (i = num_digits; i > 0; i--)
 	{
 		unsigned int power = 1;
