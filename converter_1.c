@@ -52,25 +52,37 @@ int p_percent(va_list arg)
  */
 int p_di(va_list args)
 {
-	int num, din = 1;
-	unsigned int unum, count = 0;
+	int num, i, temp, num_digits = 0, digit;
+	int count = 0;
 
 	num = va_arg(args, int);
+	if (num == 0)
+		count += _putchar('0');
+	else
+	{
 	if (num < 0)
 	{
 		count += _putchar('-');
-		num = -1 * num;
+		num = num * -1;
 	}
-	else
-		unum = num;
-	while (unum / din > 9)
-		din *= 10;
-	while (unum != 0)
+	temp = num;
+	while (temp > 0)
 	{
-		count += _putchar(unum / din + '0');
-		unum %= din;
-		din /= 10;
+		num_digits++;
+		temp /= 10;
 	}
+	for (i = num_digits - 1; i >= 0; i--)
+	{
+		int j, power = 1;
 
+		for (j = 0; j < i; j++)
+		{
+			power *= 10;
+		}
+		digit = num / power;
+		count += _putchar(digit + '0');
+		num -= digit * power;
+	}
+	}
 	return (count);
 }
