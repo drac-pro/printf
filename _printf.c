@@ -69,5 +69,6 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 	count = passer(format, specs, args);
+	va_end(args);
 	return (count);
 }
