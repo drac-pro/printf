@@ -23,6 +23,8 @@ int p_chr(va_list args);
 int p_str(va_list args);
 int p_percent(va_list args);
 int p_di(va_list args);
+int print_binary(unsigned int n);
+int p_b(va_list args);
 
 int passer(const char *format, spec_f specs[], va_list args);
 
