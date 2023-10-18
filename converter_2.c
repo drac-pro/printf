@@ -57,11 +57,11 @@ int print_u(va_list args)
 			num_digits++;
 			temp /= 10;
 		}
-		for (i = num_digits - 1; i > 0; i--)
+		for (i = num_digits; i > 0; i--)
 		{
 			unsigned int power = 1;
 
-			for (j = 0; j < i; j++)
+			for (j = 1; j < i; j++)
 			{
 				power *= 10;
 			}
@@ -101,7 +101,7 @@ int print_o(va_list args)
 		{
 			unsigned int power = 1;
 
-			for (j = 0; j < i; j++)
+			for (j = 0; j < i - 1; j++)
 			{
 				if (power > UINT_MAX / 8)
 					break;
@@ -117,17 +117,16 @@ int print_o(va_list args)
 	return (count);
 }
 /**
- * print_x_X - function to handle the hexadecimal specifier
+ * print_hexa - function to handle the hexadecimal specifier
  * @args: hexadecimal num to print
  *
  * Return: the number of bytes printed
  */
-int print_x_X(va_list args)
+int print_hexa(va_list args)
 {
-	unsigned int i, j, num, temp, num_digits = 0, digit;
-	char specifier = 'X';
-	int uppercase = (specifier == 'X');
+	unsigned int i, j, num, temp, num_digits = 0, digit, power;
 	int count = 0;
+	int uppercase = 0;
 
 	num = va_arg(args, unsigned int);
 	if (num == 0)
@@ -141,24 +140,26 @@ int print_x_X(va_list args)
 			temp /= 16;
 		}
 
-	for (i = num_digits; i > 0; i--)
-	{
-		unsigned int power = 1;
-
-		for (j = 0; j < i; j++)
+		for (i = num_digits; i < 8; i++)
 		{
-			if (power > UINT_MAX / 16)
-				break;
-			power *= 16;
+			count += _putchar(uppercase ? '0' : 'f');
 		}
-		digit = num / power;
-		if (digit < 10)
-			count += _putchar(digit + '0');
-		else
-			count += _putchar(digit - 10 + (uppercase ? 'A' : 'a'));
-		num -= digit * power;
-	}
-
+		for (i = num_digits; i > 0; i--)
+		{
+			power = 1;
+			for (j = 1; j < i; j++)
+			{
+				if (power > UINT_MAX / 16)
+					break;
+				power *= 16;
+			}
+			digit = num / power;
+			if (digit < 10)
+				count += _putchar(digit + '0');
+			else
+				count += _putchar(digit - 10 + (uppercase ? 'A' : 'a'));
+			num -= digit * power;
+		}
 	}
 	return (count);
 }
