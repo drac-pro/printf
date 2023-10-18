@@ -35,8 +35,6 @@ int print_HEXA(va_list args)
 
 			for (j = 1; j < i; j++)
 			{
-				if (power > UINT_MAX / 16)
-					break;
 				power *= 16;
 			}
 			digit = num / power;

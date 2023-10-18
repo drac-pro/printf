@@ -103,8 +103,6 @@ int print_o(va_list args)
 
 			for (j = 0; j < i - 1; j++)
 			{
-				if (power > UINT_MAX / 8)
-					break;
 				power *= 8;
 			}
 
@@ -149,8 +147,6 @@ int print_hexa(va_list args)
 			power = 1;
 			for (j = 1; j < i; j++)
 			{
-				if (power > UINT_MAX / 16)
-					break;
 				power *= 16;
 			}
 			digit = num / power;
