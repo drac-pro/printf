@@ -140,7 +140,6 @@ int print_x_X(va_list args)
 			num_digits++;
 			temp /= 16;
 		}
-	}
 
 	for (i = num_digits; i > 0; i--)
 	{
@@ -158,6 +157,8 @@ int print_x_X(va_list args)
 		else
 			count += _putchar(digit - 10 + (uppercase ? 'A' : 'a'));
 		num -= digit * power;
+	}
+
 	}
 	return (count);
 }
