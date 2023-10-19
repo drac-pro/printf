@@ -69,6 +69,7 @@ int _printf(const char *format, ...)
 		{'x', print_hexa},
 		{'X', print_HEXA},
 		{'S', print_String},
+		{'p', print_p},
 		{0, NULL}
 	};
 
