@@ -108,20 +108,15 @@ int print_address(void *str)
 		unsigned long mask = 0xfUL << (i * 4);
 
 		digit = (address & mask) >> (i * 4);
-		
 		if (digit == 0 && leading_zeros)
 		{
 			continue;
 		}
-		
 		leading_zeros = 0;
-		
 		count += _putchar(hex_digits[digit]);
 	}
-	
 	return (count);
 }
-
 /**
  * print_p - function to handle conversion specifier p
  * @args: argument to print
