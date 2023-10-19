@@ -68,6 +68,7 @@ int _printf(const char *format, ...)
 		{'o', print_o},
 		{'x', print_hexa},
 		{'X', print_HEXA},
+		{'S', print_String},
 		{0, NULL}
 	};
 

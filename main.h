@@ -29,6 +29,7 @@ int print_u(va_list args);
 int print_o(va_list args);
 int print_hexa(va_list args);
 int print_HEXA(va_list args);
+int print_String(va_list args);
 
 int passer(const char *format, spec_f specs[], va_list args);
 
