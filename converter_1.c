@@ -53,10 +53,15 @@ int p_percent(va_list arg)
 int p_di(va_list args)
 {
 	int count = 0, num = va_arg(args, int);
-	unsigned int n = num;
+	unsigned int n;
 
 	if (num < 0)
+	{
 		count += _putchar('-');
+		n = -num;
+	}
+	else
+		n = num;
 	count += p_di_helper(n);
 
 	return (count);
