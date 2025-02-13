@@ -47,7 +47,7 @@ int p_percent(va_list arg)
 }
 /**
  * p_di -  function prints integers
- * @arg: pointer to argument(not usefull here) just technical
+ * @args: pointer to argument(not usefull here) just technical
  * Return: number of bytes printed
  */
 int p_di(va_list args)

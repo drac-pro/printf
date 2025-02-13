@@ -11,13 +11,13 @@
  */
 int passer(const char *format, spec_f specs[], va_list args)
 {
-	int i, j, count;
+	int i, j = 0, count = 0;
 
-	j = 0, count = 0;
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
+			/* inner loop to handle format specifiers */
 			for (j = 0; specs[j].spec != 0; j++)
 			{
 			if (format[i + 1] == specs[j].spec)
@@ -39,6 +39,7 @@ int passer(const char *format, spec_f specs[], va_list args)
 		}
 		else
 		{
+			/* prints character if it's not a '%' */
 			_putchar(format[i]);
 			count++;
 		}
@@ -79,5 +80,6 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	count = passer(format, specs, args);
 	va_end(args);
+
 	return (count);
 }
