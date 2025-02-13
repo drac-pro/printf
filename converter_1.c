@@ -55,6 +55,7 @@ int p_di(va_list args)
 	int count = 0, num = va_arg(args, int);
 	unsigned int n;
 
+	/* handling negative integers*/
 	if (num < 0)
 	{
 		count += _putchar('-');
