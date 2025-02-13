@@ -30,7 +30,10 @@ int print_binary(unsigned int n)
 
 	if (n == 0)
 		return (0);
+	/* divide by two using binary right shift */
+	/*recursion unwind cause first call to print last digit*/
 	count += print_binary(n >> 1);
+	/* print least significan bit*/
 	_putchar('0' + (n & 1));
 	count++;
 	return (count);
