@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#define BUFFER_SIZE 1024
+
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -17,6 +19,7 @@ typedef struct specifier_format
 } spec_f;
 
 int _putchar(char c);
+void flush_buffer(void);
 int _printf(const char *format, ...);
 
 int p_chr(va_list args);

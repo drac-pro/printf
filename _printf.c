@@ -81,5 +81,7 @@ int _printf(const char *format, ...)
 	count = passer(format, specs, args);
 	va_end(args);
 
+	flush_buffer();
+
 	return (count);
 }
