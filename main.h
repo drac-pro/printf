@@ -23,16 +23,18 @@ int p_chr(va_list args);
 int p_str(va_list args);
 int p_percent(va_list args);
 int p_di(va_list args);
-int p_di_helper(unsigned int n);
-int print_binary(unsigned int n);
 int p_b(va_list args);
 int print_u(va_list args);
 int print_o(va_list args);
-int print_hexa(va_list args);
-int print_HEXA(va_list args);
+int print_x(va_list args);
+int print_X(va_list args);
 int print_String(va_list args);
 int print_address(void *str);
 int print_p(va_list args);
+
+int p_diou_helper(unsigned int n, int base);
+int print_binary(unsigned int n);
+int p_xX_helper(unsigned int n, char x);
 
 int passer(const char *format, spec_f specs[], va_list args);
 

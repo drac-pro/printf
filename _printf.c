@@ -67,8 +67,8 @@ int _printf(const char *format, ...)
 		{'b', p_b},
 		{'u', print_u},
 		{'o', print_o},
-		{'x', print_hexa},
-		{'X', print_HEXA},
+		{'x', print_x},
+		{'X', print_X},
 		{'S', print_String},
 		{'p', print_p},
 		{0, NULL}

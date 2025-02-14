@@ -63,23 +63,24 @@ int p_di(va_list args)
 	}
 	else
 		n = num;
-	count += p_di_helper(n);
+	count += p_diou_helper(n, 10);
 
 	return (count);
 }
 /**
- * p_di_helper - Recursively print digits of a number
- * @n: Unsigned number to print
- * Return: Number of digits printed
+ * p_b -  function prints binary
+ * @args: pointer to argument(not usefull here) just technical
+ * Return: number of bytes printed
  */
-int p_di_helper(unsigned int n)
+int p_b(va_list args)
 {
-	int count = 0;
+	unsigned int num = va_arg(args, int);
 
-	if (n / 10)
-		count += p_di_helper(n / 10);
-	_putchar(n % 10 + '0');
-	count++;
+	if (num == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
 
-	return (count);
+	return (print_binary(num));
 }
