@@ -9,28 +9,19 @@
 int print_String(va_list args)
 {
 	int i, count = 0;
+	const char *hex_digits = "0123456789ABCDEF";
 	char *str = va_arg(args, char *);
 
 	if (str == NULL)
-	{
-		const char nullStr[] = "(null)";
-
-		for (i = 0; nullStr[i] != '\0'; i++)
-		{
-			count += _putchar(nullStr[i]);
-		}
-		return (count);
-	}
-
+		str = "(null)";
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (str[i] < 32 || str[i] >= 127)
 		{
 			count += _putchar('\\');
 			count += _putchar('x');
-			count += _putchar("0123456789ABCDEF"[(unsigned char) str[i] >> 4
-					& 0xF]);
-			count += _putchar("0123456789ABCDEF"[(unsigned char) str[i] & 0xF]);
+			count += _putchar(hex_digits[(unsigned char) str[i] >> 4]);
+			count += _putchar(hex_digits[(unsigned char) str[i] & 0xF]);
 		}
 		else
 		{

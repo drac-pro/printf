@@ -46,12 +46,11 @@ int print_binary(unsigned int n)
 int p_xX_helper(unsigned int n, char x)
 {
 	int count = 0;
-	const char *x_chars = "0123456789abcdef";
-	const char *X_chars = "0123456789ABCDEF";
+	const char *hex_chars = x == 'x' ? "0123456789abcdef" : "0123456789ABCDEF";
 
 	if (n / 16)
 		count += p_xX_helper(n / 16, x);
-	x == 'x' ? _putchar(x_chars[n % 16]) : _putchar(X_chars[n % 16]);
+	_putchar(hex_chars[n % 16]);
 	count++;
 
 	return (count);
