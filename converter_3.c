@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * print_String - function prints custom specifier string
+ * print_S - function prints custom specifier string
  * @args: argument to print
  *
  * Return: counter
  */
-int print_String(va_list args)
+int print_S(va_list args)
 {
 	int i, count = 0;
 	const char *hex_digits = "0123456789ABCDEF";
@@ -33,31 +33,26 @@ int print_String(va_list args)
 }
 /**
  * print_address - function to print address of args.
- * @str: pointer to the address
+ * @ptr: pointer to the address
  *
  * Return: count
  */
-int print_address(void *str)
+int print_address(void *ptr)
 {
-	unsigned long address = (unsigned long)str;
-
-	int num_digits = sizeof(address) * 2;
-	char hex_digits[] = "0123456789abcdef";
-
-	int i, count = 0, digit;
-	int leading_zeros = 1;
+	unsigned long address = (unsigned long)ptr;
+	/*num of hex digits need to print the address 32bit => 8 / 64bit => 16*/
+	int num_digits = sizeof(void*) * 2;
+	const char hex_digits[] = "0123456789abcdef";
+	int i, count = 0, start = 0, digit;
 
 	for (i = num_digits - 1; i >= 0; i--)
 	{
-		unsigned long mask = 0xfUL << (i * 4);
-
-		digit = (address & mask) >> (i * 4);
-		if (digit == 0 && leading_zeros)
+		digit = (address >> (i * 4)) & 0xF;
+		if (digit || start || i == 0)
 		{
-			continue;
+			count += _putchar(hex_digits[digit]);
+			start = 1;
 		}
-		leading_zeros = 0;
-		count += _putchar(hex_digits[digit]);
 	}
 	return (count);
 }
@@ -70,11 +65,13 @@ int print_address(void *str)
 int print_p(va_list args)
 {
 	int count = 0;
-	void *str = va_arg(args, void *);
+	void *ptr = va_arg(args, void *);
 
+	if (!ptr)
+		return (write(1, "(nil)", 5));
 	count += _putchar('0');
 	count += _putchar('x');
-	count += print_address(str);
+	count += print_address(ptr);
 
 	return (count);
 }

@@ -69,7 +69,7 @@ int _printf(const char *format, ...)
 		{'o', print_o},
 		{'x', print_x},
 		{'X', print_X},
-		{'S', print_String},
+		{'S', print_S},
 		{'p', print_p},
 		{0, NULL}
 	};
