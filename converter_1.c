@@ -70,10 +70,8 @@ int p_di(va_list args, int flags)
 	{
 		/*for positive, handling the '+' and ' ' flags apply only to %d, %i*/
 		/*'+' flag takes priority over ' '*/
-		if (flags & PLUS_FLAG)
-			count += _putchar('+');
-		else if (flags & SPACE_FLAG)
-			count += _putchar(' ');
+		count += (flags & PLUS_FLAG) ? _putchar('+') :
+				 (flags & SPACE_FLAG) ? _putchar(' ') : 0;
 		n = num;
 	}
 	count += p_diou_helper(n, 10);
