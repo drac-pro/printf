@@ -55,3 +55,29 @@ int p_xX_helper(unsigned int n, char x)
 
 	return (count);
 }
+/**
+ * print_address - function to print address of args.
+ * @ptr: pointer to the address
+ *
+ * Return: count
+ */
+int print_address(void *ptr)
+{
+	unsigned long address = (unsigned long)ptr;
+	/*num of hex digits need to print the address 32bit => 8 / 64bit => 16*/
+	int num_digits = sizeof(void *) * 2;
+	const char hex_digits[] = "0123456789abcdef";
+	int i, count = 0, start = 0, digit;
+
+	for (i = num_digits - 1; i >= 0; i--)
+	{
+		digit = (address >> (i * 4)) & 0xF;
+		/*handles leading zeros and edge case of 0x0*/
+		if (digit || start || i == 0)
+		{
+			count += _putchar(hex_digits[digit]);
+			start = 1;
+		}
+	}
+	return (count);
+}

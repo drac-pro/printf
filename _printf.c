@@ -1,6 +1,42 @@
 #include "main.h"
 
 /**
+ * parse_flags - Parses flag characters from the format string.
+ * @format: format string
+ * @i: pointer to the current index in format string
+ * Return: An integer bitmask with flags set
+ */
+int parse_flags(const char *format, int *i)
+{
+	int flags = 0;
+
+	while (format[*i + 1] == '+' || format[*i + 1] == ' ' ||
+		   format[*i + 1] == '#' || format[*i + 1] == '0' ||
+		   format[*i + 1] == '-')
+	{
+		(*i)++;
+		switch (format[*i])
+		{
+		case '+':
+			flags |= PLUS_FLAG;
+			break;
+		case ' ':
+			flags |= SPACE_FLAG;
+			break;
+		case '#':
+			flags |= HASH_FLAG;
+			break;
+		case '0':
+			flags |= ZERO_FLAG;
+			break;
+		case '-':
+			flags |= MINUS_FLAG;
+			break;
+		}
+	}
+	return (flags);
+}
+/**
  * passer - helper function for _printf this function loops through the format
  *	string printing the characters and calls the respective function to
  *	handle a specifier when it meets one.
@@ -11,21 +47,26 @@
  */
 int passer(const char *format, spec_f specs[], va_list args)
 {
-	int i, j = 0, count = 0;
+	int i, j = 0, count = 0, flags = 0;
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
+			flags = 0; /*reset flags*/
+			/*Parse flags and update i accordingly*/
+			flags = parse_flags(format, &i);
+
 			/* inner loop to handle format specifiers */
 			for (j = 0; specs[j].spec != 0; j++)
 			{
 			if (format[i + 1] == specs[j].spec)
 			{
-				count += specs[j].f(args);
+				count += specs[j].f(args, flags);
 				break;
 			}
 			}
+
 			if (specs[j].spec == 0)
 			{
 			if (format[i + 1] != '\0')
@@ -81,6 +122,7 @@ int _printf(const char *format, ...)
 	count = passer(format, specs, args);
 	va_end(args);
 
+	/*clear the buffer printing anything in it even if buffer is not full*/
 	flush_buffer();
 
 	return (count);
