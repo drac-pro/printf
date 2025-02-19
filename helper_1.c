@@ -6,7 +6,7 @@
  * @base: base of the number to be printed
  * Return: Number of digits printed
  */
-int p_diou_helper(unsigned int n, int base)
+int p_diou_helper(unsigned long n, int base)
 {
 	int count = 0;
 
@@ -43,7 +43,7 @@ int print_binary(unsigned int n)
  * @x: character specifying lower or uppercase hex number
  * Return: number of hex digits printed
  */
-int p_xX_helper(unsigned int n, char x)
+int p_xX_helper(unsigned long n, char x)
 {
 	int count = 0;
 	const char *hex_chars = x == 'x' ? "0123456789abcdef" : "0123456789ABCDEF";

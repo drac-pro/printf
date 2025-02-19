@@ -1,6 +1,29 @@
 #include "main.h"
 
 /**
+ * parse_length - Parses length modifier characters from the format string.
+ * @format: format string
+ * @i: pointer to the current index in format string
+ * Return: An integer with length modifier set
+ */
+int parse_length(const char *format, int *i)
+{
+	int length = LENGTH_NONE;
+
+	switch (format[*i + 1])
+	{
+	case 'l':
+		length = LENGTH_LONG;
+		(*i)++;
+		break;
+	case 'h':
+		length = LENGTH_SHORT;
+		(*i)++;
+		break;
+	}
+	return (length);
+}
+/**
  * parse_flags - Parses flag characters from the format string.
  * @format: format string
  * @i: pointer to the current index in format string
@@ -47,7 +70,7 @@ int parse_flags(const char *format, int *i)
  */
 int passer(const char *format, spec_f specs[], va_list args)
 {
-	int i, j = 0, count = 0, flags = 0;
+	int i, j = 0, count = 0, flags = 0, length = LENGTH_NONE;
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -56,17 +79,18 @@ int passer(const char *format, spec_f specs[], va_list args)
 			flags = 0; /*reset flags*/
 			/*Parse flags and update i accordingly*/
 			flags = parse_flags(format, &i);
+			/*Parse length modifier and update i accordingly*/
+			length = parse_length(format, &i);
 
 			/* inner loop to handle format specifiers */
 			for (j = 0; specs[j].spec != 0; j++)
 			{
 			if (format[i + 1] == specs[j].spec)
 			{
-				count += specs[j].f(args, flags);
+				count += specs[j].f(args, flags, length);
 				break;
 			}
 			}
-
 			if (specs[j].spec == 0)
 			{
 			if (format[i + 1] != '\0')

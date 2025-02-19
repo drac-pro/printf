@@ -4,12 +4,13 @@
  * print_u - function prints unsigned interger
  * @args: unsigned number to print
  * @flags: bitmask int representing flags to be processed
+ * @length: int representing length modifier
  *
  * Return: number of bytes
  */
-int print_u(va_list args, int flags)
+int print_u(va_list args, int flags, int length)
 {
-	unsigned int num = va_arg(args, unsigned int);
+	unsigned long num = length_modifier(args, length);
 
 	(void) flags;
 	return (p_diou_helper(num, 10));
@@ -18,12 +19,13 @@ int print_u(va_list args, int flags)
  * print_o - function to handle specifier o.
  * @args: argument to print
  * @flags: bitmask int representing flags to be processed
+ * @length: int representing length modifier
  *
  * Return: number of bytes.
  */
-int print_o(va_list args, int flags)
+int print_o(va_list args, int flags, int length)
 {
-	unsigned int num = va_arg(args, unsigned int);
+	unsigned long num = length_modifier(args, length);
 	int count = 0;
 
 	/*handling the '#' flag*/
@@ -37,12 +39,13 @@ int print_o(va_list args, int flags)
  * print_x - function to handle the hexadecimal specifier
  * @args: hexadecimal num to print
  * @flags: bitmask int representing flags to be processed
+ * @length: int representing length modifier
  *
  * Return: the number of bytes printed
  */
-int print_x(va_list args, int flags)
+int print_x(va_list args, int flags, int length)
 {
-	unsigned int num =  va_arg(args, unsigned int);
+	unsigned long num = length_modifier(args, length);
 	int count = 0;
 
 	/*handling the '#' flag*/
@@ -59,12 +62,13 @@ int print_x(va_list args, int flags)
  * print_X - function to handle the 'X' hexadecimal specifier
  * @args: hexadecimal num to print
  * @flags: bitmask int representing flags to be processed
+ * @length: int representing length modifier
  *
  * Return: the number of bytes printed
  */
-int print_X(va_list args, int flags)
+int print_X(va_list args, int flags, int length)
 {
-	unsigned int num = va_arg(args, unsigned int);
+	unsigned long num = length_modifier(args, length);
 	int count = 0;
 
 	/*handling the '#' flag*/

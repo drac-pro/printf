@@ -4,16 +4,18 @@
  * print_S - function prints custom specifier string
  * @args: argument to print
  * @flags: bitmask int representing flags to be processed
+ * @length: int representing length modifier
  *
  * Return: counter
  */
-int print_S(va_list args, int flags)
+int print_S(va_list args, int flags, int length)
 {
 	int i, count = 0;
 	const char *hex_digits = "0123456789ABCDEF";
 	char *str = va_arg(args, char *);
 
 	(void) flags;
+	(void) length;
 
 	if (str == NULL)
 		str = "(null)";
@@ -40,15 +42,17 @@ int print_S(va_list args, int flags)
  * print_p - function to handle conversion specifier p
  * @args: argument to print
  * @flags: bitmask int representing flags to be processed
+ * @length: int representing length modifier
  *
  * Return: counter
  */
-int print_p(va_list args, int flags)
+int print_p(va_list args, int flags, int length)
 {
 	int count = 0;
 	void *ptr = va_arg(args, void *);
 
 	(void) flags;
+	(void) length;
 
 	if (!ptr)
 		return (write(1, "(nil)", 5));
